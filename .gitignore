@@ -2,5 +2,6 @@ node_modules/
 public/components
 gitlogg.json
 public/css/style.css
+.DS_Store
 .nyc_output
 .sass-cache
