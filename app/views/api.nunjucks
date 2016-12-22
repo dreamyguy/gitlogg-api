@@ -2,5 +2,117 @@
 
 {% block content %}
   <h1>{{ title }}</h1>
-  {{ status }}
+  Status: {{ status }}
+  <p>The API has the following available datapoints:</p>
+
+  <h3>API Status & Documentation <em>(this page)</em></h3>
+
+  <pre><code class="language-js">/api</code></pre>
+
+  <h3>Get <em>ALL</em> commits</h3>
+
+  <pre><code class="language-js">/api/all</code></pre>
+
+  <h3>Global Stats operations</h3>
+
+  <p>Get global stats</p>
+  <pre><code class="language-js">/api/stats</code></pre>
+
+  <p>Get repositories stats</p>
+  <pre><code class="language-js">/api/repositories/stats</code></pre>
+
+  <p>Get authors stats</p>
+  <pre><code class="language-js">/api/authors/stats</code></pre>
+
+  <h3>Get Authors, by</h3>
+
+  <p>Get authors, by <em>email</em></p>
+  <pre><code class="language-js">/api/authors/by-email</code></pre>
+
+  <p>Get authors, by <em>commit count</em></p>
+  <pre><code class="language-js">/api/authors/by-commit-count</code></pre>
+
+  <p>Get authors, by <em>impact</em></p>
+  <pre><code class="language-js">/api/authors/by-impact</code></pre>
+
+  <h3>Equal Values operations</h3>
+
+  <p>Get all commits with same <em>repository</em></p>
+  <pre><code class="language-js">/api/repository/:repository</code></pre>
+
+  <p>Get all commits with same <em>commit_nr</em></p>
+  <pre><code class="language-js">/api/commit_nr/:commit_nr</code></pre>
+
+  <p>Get all commits with same <em>commit_hash</em></p>
+  <pre><code class="language-js">/api/commit_hash/:commit_hash</code></pre>
+
+  <p>Get all commits with same <em>author_name</em></p>
+  <pre><code class="language-js">/api/author_name/:author_name</code></pre>
+
+  <p>Get all commits with same <em>author_email</em></p>
+  <pre><code class="language-js">/api/author_email/:author_email</code></pre>
+
+  <p>Get all commits with same <em>author_date</em></p>
+  <pre><code class="language-js">/api/author_date/:author_date</code></pre>
+
+  <p>Get all commits with same <em>author_date_relative</em></p>
+  <pre><code class="language-js">/api/author_date_relative/:author_date_relative</code></pre>
+
+  <p>Get all commits with same <em>author_date_unix_timestamp</em></p>
+  <pre><code class="language-js">/api/author_date_unix_timestamp/:author_date_unix_timestamp</code></pre>
+
+  <p>Get all commits with same <em>author_date_iso_8601</em></p>
+  <pre><code class="language-js">/api/author_date_iso_8601/:author_date_iso_8601</code></pre>
+
+  <p>Get all commits with same <em>subject</em></p>
+  <pre><code class="language-js">/api/subject/:subject</code></pre>
+
+  <p>Get all commits with same <em>subject_sanitized</em></p>
+  <pre><code class="language-js">/api/subject_sanitized/:subject_sanitized</code></pre>
+
+  <p>Get all commits with same <em>stats</em></p>
+  <pre><code class="language-js">/api/stats/:stats</code></pre>
+
+  <p>Get all commits with same <em>time_hour</em></p>
+  <pre><code class="language-js">/api/time_hour/:time_hour</code></pre>
+
+  <p>Get all commits with same <em>time_minutes</em></p>
+  <pre><code class="language-js">/api/time_minutes/:time_minutes</code></pre>
+
+  <p>Get all commits with same <em>time_seconds</em></p>
+  <pre><code class="language-js">/api/time_seconds/:time_seconds</code></pre>
+
+  <p>Get all commits with same <em>time_gmt</em></p>
+  <pre><code class="language-js">/api/time_gmt/:time_gmt</code></pre>
+
+  <p>Get all commits with same <em>date_day_week</em></p>
+  <pre><code class="language-js">/api/date_day_week/:date_day_week</code></pre>
+
+  <p>Get all commits with same <em>date_month_day</em></p>
+  <pre><code class="language-js">/api/date_month_day/:date_month_day</code></pre>
+
+  <p>Get all commits with same <em>date_month_name</em></p>
+  <pre><code class="language-js">/api/date_month_name/:date_month_name</code></pre>
+
+  <p>Get all commits with same <em>date_month_number</em></p>
+  <pre><code class="language-js">/api/date_month_number/:date_month_number</code></pre>
+
+  <p>Get all commits with same <em>date_year</em></p>
+  <pre><code class="language-js">/api/date_year/:date_year</code></pre>
+
+  <p>Get all commits with same <em>date_iso_8601</em></p>
+  <pre><code class="language-js">/api/date_iso_8601/:date_iso_8601</code></pre>
+
+  <p>Get all commits with same <em>files_changed</em></p>
+  <pre><code class="language-js">/api/files_changed/:files_changed</code></pre>
+
+  <p>Get all commits with same <em>insertions</em></p>
+  <pre><code class="language-js">/api/insertions/:insertions</code></pre>
+
+  <p>Get all commits with same <em>deletions</em></p>
+  <pre><code class="language-js">/api/deletions/:deletions</code></pre>
+
+  <p>Get all commits with same <em>impact</em></p>
+  <pre><code class="language-js">/api/impact/:impact</code></pre>
+
 {% endblock %}
