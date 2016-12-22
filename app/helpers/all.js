@@ -626,6 +626,21 @@
           this.arrayByKeyFiltered(data, 'date_day_week', 'Sun')
         );
         var totalCommitsOnWeekends = totalCommitsOnSaturday + totalCommitsOnSunday;
+        // calculate commits on a given week day
+        var weekdays = this.arrayByKey(data, 'date_day_week');
+        // calculate days between first and last commits
+        var commitDateFirst = data[0].author_date_unix_timestamp;
+        var commitDateLast = data[data.length - 1].author_date_unix_timestamp;
+        var daysActive = this.daysBetween(commitDateFirst, commitDateLast);
+        // calculate days since first and last commits
+        var daysSinceFirstCommit = this.daysSince(commitDateFirst);
+        var daysSinceLastCommit = this.daysSince(commitDateLast);
+        // calculate commits per day
+        var commitsPerContributor = (totalNrCommits / totalNrContributors);
+        // calculate commits per day
+        var commitsPerDay = (daysActive / totalNrCommits);
+        // calculate commits by day
+        var commitsByDay = this.arrayByKey(data, 'date_iso_8601');
 
         stats.push({
             commits: totalNrCommits,
@@ -636,7 +651,16 @@
             commits_without_file_changes: totalCommitsWithoutFileChanges,
             commits_without_impact: totalCommitsWithoutImpact,
             commits_impact_gt_thousand: totalCommitsImpactGreaterThan,
-            commits_weekend: totalCommitsOnWeekends
+            commits_weekend: totalCommitsOnWeekends,
+            weekdays: this.groupByDuplicatesInArray(weekdays),
+            daysActive: daysActive,
+            commitDateFirst: commitDateFirst,
+            commitDateLast: commitDateLast,
+            daysSinceFirstCommit: daysSinceFirstCommit,
+            daysSinceLastCommit: daysSinceLastCommit,
+            commitsPerDay: commitsPerDay,
+            commitsPerContributor: commitsPerContributor,
+            commitsByDay: this.groupByDuplicatesInArray(commitsByDay)
         });
 
         return stats;
