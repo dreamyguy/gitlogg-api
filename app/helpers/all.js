@@ -641,6 +641,10 @@
         var commitsPerDay = (daysActive / totalNrCommits);
         // calculate commits by day
         var commitsByDay = this.arrayByKey(data, 'date_iso_8601');
+        // contributor + commits
+        var arrayAuthorsStatsAuthorAndCommits = this.arraysMerge(this.arrayAuthorsStats(data, 'author'), this.arrayAuthorsStats(data, 'commits'));
+        // contributor + impact
+        var arrayAuthorsStatsAuthorAndImpact = this.arraysMerge(this.arrayAuthorsStats(data, 'author'), this.arrayAuthorsStats(data, 'impact'));
 
         stats.push({
             commits: totalNrCommits,
@@ -660,6 +664,8 @@
             daysSinceLastCommit: daysSinceLastCommit,
             commitsPerDay: commitsPerDay,
             commitsPerContributor: commitsPerContributor,
+            commitsByContributor: arrayAuthorsStatsAuthorAndCommits,
+            impactByContributor: arrayAuthorsStatsAuthorAndImpact,
             commitsByDay: this.groupByDuplicatesInArray(commitsByDay)
         });
 
