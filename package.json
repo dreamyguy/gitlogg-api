@@ -1,5 +1,5 @@
 {
-  "name": "zzz",
+  "name": "gitlogg-api",
   "version": "0.0.1",
   "private": true,
   "main": "app.js",
@@ -9,7 +9,7 @@
     "test:coverage": "nyc npm test",
     "test:unit": "mocha --recursive test/middleware test/models test/routes",
     "test:integration": "mocha --recursive test/integration",
-    "import": "mongoimport --db zzz-development --drop --collection commits --type json --file gitlogg.json --jsonArray"
+    "import": "mongoimport --db gitlogg-api-development --drop --collection commits --type json --file gitlogg.json --jsonArray"
   },
   "dependencies": {
     "express": "^4.13.3",

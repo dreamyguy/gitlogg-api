@@ -6,28 +6,28 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'zzz'
+      name: 'gitlogg-api'
     },
     port: process.env.PORT || 7000,
-    db: 'mongodb://localhost/zzz-development'
+    db: 'mongodb://localhost/gitlogg-api-development'
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'zzz'
+      name: 'gitlogg-api'
     },
     port: process.env.PORT || 7000,
-    db: 'mongodb://localhost/zzz-test'
+    db: 'mongodb://localhost/gitlogg-api-test'
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'zzz'
+      name: 'gitlogg-api'
     },
     port: process.env.PORT || 7000,
-    db: 'mongodb://localhost/zzz-production'
+    db: 'mongodb://localhost/gitlogg-api-production'
   }
 };
 
