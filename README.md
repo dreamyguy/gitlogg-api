@@ -14,13 +14,13 @@
 
 To get started, follow these steps, in this order:
 
-1. Install `NodeJS` (visit [their page][2] to find the right install for your system).
-2. Install `MongoDB` (visit [their page][3] to find the right install for your system).
-3. On the 1st terminal window, run `mongod`. That will initialise MongoDB. More details on MongoDB processes [here](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/).
-4. On the 2nd terminal window, navigate to where you've cloned this project and run `npm install`. That will install all dependencies.
-5. Place the parsed `gitlogg.json` file, which is the output of [**Gitlogg**][4], at the root of the project.
-6. Still on the same window, run `npm run import`. That will create a new collection on the `mongo`database and import the data within `gitlogg.json` into it.
-7. On the 3rd terminal window, run `gulp`. That will compile static files and initialise the server with live-reload.
+1. Place the parsed `gitlogg.json` file, which is the output of [**Gitlogg**][4], at the root of the project. This is the 1st step because Without it, there's no point initialising the API.
+2. Install `NodeJS` (visit [their page][2] to find the right install for your system).
+3. Install `MongoDB` (visit [their page][3] to find the right install for your system).
+4. On the 1st terminal window, run `mongod`. That will initialise MongoDB. More details on MongoDB processes [here](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/).
+5. On the 2nd terminal window, navigate to where you've cloned this project and run `npm install`. That will install all dependencies.
+6. On the same window, run `npm run import`. That will create a new collection on the `mongo`database and import the data within `gitlogg.json` into it.
+7. On the same window, run `gulp`. That will compile static files and initialise the server with live-reload.
 
 Optional: On a new terminal window, run `mongo`. That will open you a [shell from which you can query and update data as well as perform administrate operations](https://docs.mongodb.com/manual/mongo/). This step is not necessary but the shell can help you debug problems with the database.
 
