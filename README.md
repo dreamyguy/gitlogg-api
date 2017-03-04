@@ -144,9 +144,9 @@ Having said that, they're served _raw_ and _'as is'_. You may get support, but d
 
 * No caching, _yet_. Depending of the size of your data, the API will load, but with a lot of lag.
 * All the helper functions that are used to crunch the data are thrown into one file, making it bigger and more complex than I'd like it to be. It will be modularised as soon as I achieve some milestones.
-** There's some redundant content on the very same file, which I will remove in due time.
+ * There's some redundant content on the very same file, which I will remove in due time.
 * There are no tests at the moment.
-** As there are no tests, some of the helper functions may not work as they are expected to.
+ * As there are no tests, some of the helper functions may not work as they are expected to.
 
 None of these issues are detrimental to the functionality of the current API at the time of this writing, AFAIK.
 
