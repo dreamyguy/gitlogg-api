@@ -122,6 +122,15 @@ router.get('/api/repositories/staleness', function (req, res, next) {
   });
 });
 
+// get repositories - stats simple - sorted by days active
+router.get('/api/repositories/days-active', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-days-active');
+    res.json(a);
+  });
+});
+
 ///////////////////////////////////
 ///// Authors Operations //////////
 ///////////////////////////////////
@@ -169,6 +178,15 @@ router.get('/api/authors/staleness', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     var a = oxo.arrayAuthorsStats(commits, 'simple-by-staleness');
+    res.json(a);
+  });
+});
+
+// get authors - stats simple - sorted by days active
+router.get('/api/authors/days-active', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayAuthorsStats(commits, 'simple-by-days-active');
     res.json(a);
   });
 });

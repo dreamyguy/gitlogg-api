@@ -60,6 +60,11 @@
     url='/api/repositories/staleness',
     link=true
   )}}
+  {{apiUrl(
+    heading='Get repositories, by <em>days active</em>',
+    url='/api/repositories/days-active',
+    link=true
+  )}}
 
   <h2>Authors Operations</h2>
 
@@ -88,6 +93,11 @@
   {{apiUrl(
     heading='Get authors, by <em>staleness</em>',
     url='/api/authors/staleness',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, by <em>days active</em>',
+    url='/api/authors/days-active',
     link=true
   )}}
 

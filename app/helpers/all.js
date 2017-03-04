@@ -489,6 +489,7 @@
                         commits: authorNrCommits,
                         impact: authorImpactSum,
                         impactRatio: authorImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -499,6 +500,7 @@
                         commits: authorNrCommits,
                         impact: authorImpactSum,
                         impactRatio: authorImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -509,6 +511,7 @@
                         commits: authorNrCommits,
                         impact: authorImpactSum,
                         impactRatio: authorImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -519,6 +522,7 @@
                         commits: authorNrCommits,
                         impact: authorImpactSum,
                         impactRatio: authorImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -529,18 +533,30 @@
                         commits: authorNrCommits,
                         impact: authorImpactSum,
                         impactRatio: authorImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
                     stats = this.sortArrayByKey(stats, 'staleness', 'desc');
+                } else if (type == 'simple-by-days-active') {
+                    stats.push({
+                        author: b,
+                        commits: authorNrCommits,
+                        impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
+                        daysActive : daysActive,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'daysActive', 'desc');
                 } else {
                     stats.push({
                         author: b,
                         commits: authorNrCommits,
                         impact: authorImpactSum,
                         impactRatio: authorImpactRatio,
-                        weekdays : this.groupByDuplicatesInArray(authorDays),
                         daysActive : daysActive,
+                        weekdays : this.groupByDuplicatesInArray(authorDays),
                         commitDateFirst : commitDateFirst,
                         commitDateLast : commitDateLast,
                         daysSinceFirstCommit : daysSinceFirstCommit,
@@ -628,6 +644,7 @@
                         commits: repoNrCommits,
                         impact: repoImpactSum,
                         impactRatio: repoImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -638,6 +655,7 @@
                         commits: repoNrCommits,
                         impact: repoImpactSum,
                         impactRatio: repoImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -648,6 +666,7 @@
                         commits: repoNrCommits,
                         impact: repoImpactSum,
                         impactRatio: repoImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -658,6 +677,7 @@
                         commits: repoNrCommits,
                         impact: repoImpactSum,
                         impactRatio: repoImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
@@ -668,24 +688,35 @@
                         commits: repoNrCommits,
                         impact: repoImpactSum,
                         impactRatio: repoImpactRatio,
+                        daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness
                     });
                     stats = this.sortArrayByKey(stats, 'staleness', 'desc');
+                } else if (type == 'simple-by-days-active') {
+                    stats.push({
+                        repository: b,
+                        commits: repoNrCommits,
+                        impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysActive : daysActive,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'daysActive', 'desc');
                 } else {
                     stats.push({
                         repository: b,
                         commits: repoNrCommits,
                         impact: repoImpactSum,
                         impactRatio: repoImpactRatio,
-                        daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness,
+                        daysActive : daysActive,
                         weekdays: this.groupByDuplicatesInArray(repoDays),
-                        daysActive: daysActive,
                         commitDateFirst: commitDateFirst,
                         commitDateLast: commitDateLast,
                         daysSinceFirstCommit: daysSinceFirstCommit,
                         daysSinceLastCommit: daysSinceLastCommit,
+                        staleness: staleness,
                         commitsPerDay: this.groupByDuplicatesInArray(commitsPerDay)
                     });
                 }
