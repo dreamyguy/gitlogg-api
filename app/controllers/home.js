@@ -131,6 +131,15 @@ router.get('/api/repositories/days-active', function (req, res, next) {
   });
 });
 
+// get repositories - stats simple - sorted by nr of contributors
+router.get('/api/repositories/contributors-nr', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-contributors-nr');
+    res.json(a);
+  });
+});
+
 ///////////////////////////////////
 ///// Authors Operations //////////
 ///////////////////////////////////
@@ -187,6 +196,15 @@ router.get('/api/authors/days-active', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     var a = oxo.arrayAuthorsStats(commits, 'simple-by-days-active');
+    res.json(a);
+  });
+});
+
+// get authors - stats simple - sorted by nr repossitories contributed to
+router.get('/api/authors/repositories-nr', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayAuthorsStats(commits, 'simple-by-repositories-nr');
     res.json(a);
   });
 });

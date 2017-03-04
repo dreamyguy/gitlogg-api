@@ -452,6 +452,14 @@
                 var staleness = daysSinceLastCommit / 365;
                 // calculate commits per day
                 var commitsPerDay = this.arrayByKey(objb, 'date_iso_8601');
+                // total nr repositories
+                var totalNrRepositories = this.itemsSum(
+                    Object.keys(
+                        this.groupByDuplicatesInArray(
+                            this.arrayByKey(objb, 'repository')
+                        )
+                    )
+                );
                 // push new data to array
                 if (type == 'author') {
                     stats.push(b);
@@ -491,7 +499,8 @@
                         impactRatio: authorImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrRepositories: totalNrRepositories
                     });
                     stats = this.sortArrayByKey(stats, 'commits', 'desc');
                 } else if (type == 'simple-by-impact') {
@@ -502,7 +511,8 @@
                         impactRatio: authorImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrRepositories: totalNrRepositories
                     });
                     stats = this.sortArrayByKey(stats, 'impact', 'desc');
                 } else if (type == 'simple-by-impact-ratio') {
@@ -513,7 +523,8 @@
                         impactRatio: authorImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrRepositories: totalNrRepositories
                     });
                     stats = this.sortArrayByKey(stats, 'impactRatio', 'desc');
                 } else if (type == 'simple-by-days-since-last-commit') {
@@ -524,7 +535,8 @@
                         impactRatio: authorImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrRepositories: totalNrRepositories
                     });
                     stats = this.sortArrayByKey(stats, 'daysSinceLastCommit', 'desc');
                 } else if (type == 'simple-by-staleness') {
@@ -535,7 +547,8 @@
                         impactRatio: authorImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrRepositories: totalNrRepositories
                     });
                     stats = this.sortArrayByKey(stats, 'staleness', 'desc');
                 } else if (type == 'simple-by-days-active') {
@@ -546,9 +559,22 @@
                         impactRatio: authorImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrRepositories: totalNrRepositories
                     });
                     stats = this.sortArrayByKey(stats, 'daysActive', 'desc');
+                } else if (type == 'simple-by-repositories-nr') {
+                    stats.push({
+                        author: b,
+                        commits: authorNrCommits,
+                        impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
+                        daysActive : daysActive,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness,
+                        totalNrRepositories: totalNrRepositories
+                    });
+                    stats = this.sortArrayByKey(stats, 'totalNrRepositories', 'desc');
                 } else {
                     stats.push({
                         author: b,
@@ -562,6 +588,7 @@
                         daysSinceFirstCommit : daysSinceFirstCommit,
                         daysSinceLastCommit : daysSinceLastCommit,
                         staleness: staleness,
+                        totalNrRepositories: totalNrRepositories,
                         commitsPerDay: this.groupByDuplicatesInArray(commitsPerDay)
                     });
                 }
@@ -607,6 +634,14 @@
                 var staleness = daysSinceLastCommit / 365;
                 // calculate commits per day
                 var commitsPerDay = this.arrayByKey(objb, 'date_iso_8601');
+                // total nr contributors
+                var totalNrContributors = this.itemsSum(
+                    Object.keys(
+                        this.groupByDuplicatesInArray(
+                            this.arrayByKey(objb, 'author_email')
+                        )
+                    )
+                );
                 // push new data to array
                 if (type == 'repo') {
                     stats.push(b);
@@ -646,7 +681,8 @@
                         impactRatio: repoImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrContributors: totalNrContributors
                     });
                     stats = this.sortArrayByKey(stats, 'commits', 'desc');
                 } else if (type == 'simple-by-impact') {
@@ -657,7 +693,8 @@
                         impactRatio: repoImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrContributors: totalNrContributors
                     });
                     stats = this.sortArrayByKey(stats, 'impact', 'desc');
                 } else if (type == 'simple-by-impact-ratio') {
@@ -668,7 +705,8 @@
                         impactRatio: repoImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrContributors: totalNrContributors
                     });
                     stats = this.sortArrayByKey(stats, 'impactRatio', 'desc');
                 } else if (type == 'simple-by-days-since-last-commit') {
@@ -679,7 +717,8 @@
                         impactRatio: repoImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrContributors: totalNrContributors
                     });
                     stats = this.sortArrayByKey(stats, 'daysSinceLastCommit', 'desc');
                 } else if (type == 'simple-by-staleness') {
@@ -690,7 +729,8 @@
                         impactRatio: repoImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrContributors: totalNrContributors
                     });
                     stats = this.sortArrayByKey(stats, 'staleness', 'desc');
                 } else if (type == 'simple-by-days-active') {
@@ -701,9 +741,22 @@
                         impactRatio: repoImpactRatio,
                         daysActive : daysActive,
                         daysSinceLastCommit : daysSinceLastCommit,
-                        staleness: staleness
+                        staleness: staleness,
+                        totalNrContributors: totalNrContributors
                     });
                     stats = this.sortArrayByKey(stats, 'daysActive', 'desc');
+                } else if (type == 'simple-by-contributors-nr') {
+                    stats.push({
+                        repository: b,
+                        commits: repoNrCommits,
+                        impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysActive : daysActive,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness,
+                        totalNrContributors: totalNrContributors
+                    });
+                    stats = this.sortArrayByKey(stats, 'totalNrContributors', 'desc');
                 } else {
                     stats.push({
                         repository: b,
@@ -717,6 +770,7 @@
                         daysSinceFirstCommit: daysSinceFirstCommit,
                         daysSinceLastCommit: daysSinceLastCommit,
                         staleness: staleness,
+                        totalNrContributors: totalNrContributors,
                         commitsPerDay: this.groupByDuplicatesInArray(commitsPerDay)
                     });
                 }

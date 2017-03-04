@@ -65,6 +65,11 @@
     url='/api/repositories/days-active',
     link=true
   )}}
+  {{apiUrl(
+    heading='Get repositories, by <em>number of contributors</em>',
+    url='/api/repositories/contributors-nr',
+    link=true
+  )}}
 
   <h2>Authors Operations</h2>
 
@@ -98,6 +103,11 @@
   {{apiUrl(
     heading='Get authors, by <em>days active</em>',
     url='/api/authors/days-active',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, by <em>number of repositories</em> contributed to',
+    url='/api/authors/repositories-nr',
     link=true
   )}}
 
