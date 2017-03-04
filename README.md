@@ -1,4 +1,4 @@
-![Gitlogg API](https://raw.githubusercontent.com/dreamyguy/gitlogg-api/master/docs/gitlogg-api-icon-github.png "API for Gitlogg, so that one can retrieve 'git log' data from one or more repositories in relevant chunks")
+![Gitlogg API](https://raw.githubusercontent.com/dreamyguy/gitlogg-api/master/docs/gitlogg-api-icon-github_wide.png "API for Gitlogg, so that one can retrieve 'git log' data from one or more repositories in relevant chunks")
 
 > _API for the data provided by [Gitlogg][4], so that one can retrieve `git log` data from one or more repositories in relevant chunks._
 
@@ -28,7 +28,7 @@ Optional: On a new terminal window, run `mongo`. That will open you a [shell fro
 
 The API interface is fully dynamic and based on currently available datapoints. It currently looks like this:
 
-![Gitlogg API interface](https://raw.githubusercontent.com/dreamyguy/gitlogg-api/master/docs/gitlogg-api-interface.png "Gitlogg API interface")
+![Gitlogg API interface](https://raw.githubusercontent.com/dreamyguy/gitlogg-api/master/docs/gitlogg-api_interface.png "Gitlogg API interface")
 
 Since it's dynamic, I'll refrain from posting all the datapoints in _this_ README file, but some examples are in order.
 
