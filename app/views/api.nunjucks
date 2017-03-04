@@ -19,21 +19,57 @@
   <pre><code class="language-js">/api/stats</code></pre>
 
   <p>Get repositories stats</p>
-  <pre><code class="language-js">/api/repositories/stats</code></pre>
+  <pre><code class="language-js">/api/stats/repositories</code></pre>
 
   <p>Get authors stats</p>
-  <pre><code class="language-js">/api/authors/stats</code></pre>
+  <pre><code class="language-js">/api/stats/authors</code></pre>
 
-  <h3>Get Authors, by</h3>
+  <h3>Repositories Operations</h3>
 
-  <p>Get authors, by <em>email</em></p>
-  <pre><code class="language-js">/api/authors/by-email</code></pre>
+  <p>Get repositories, by commit count</p>
+  <pre><code class="language-js">/api/repositories/commit-count</code></pre>
+
+  <p>Get repositories, by impact</p>
+  <pre><code class="language-js">/api/repositories/impact</code></pre>
+
+  <p>Get repositories, by impact ratio</p>
+  <pre><code class="language-js">/api/repositories/impact-ratio</code></pre>
+
+  <p>Get repositories, by days since last commit</p>
+  <pre><code class="language-js">/api/repositories/days-since-last-commit</code></pre>
+
+  <p>Get repositories, by staleness</p>
+  <pre><code class="language-js">/api/repositories/staleness</code></pre>
+
+  <h3>Authors Operations</h3>
+
+  <p><strong>Simple stats, sorted by...</strong></p>
 
   <p>Get authors, by <em>commit count</em></p>
-  <pre><code class="language-js">/api/authors/by-commit-count</code></pre>
+  <pre><code class="language-js">/api/authors/commit-count</code></pre>
 
   <p>Get authors, by <em>impact</em></p>
-  <pre><code class="language-js">/api/authors/by-impact</code></pre>
+  <pre><code class="language-js">/api/authors/impact</code></pre>
+
+  <p>Get authors, by <em>impact ratio</em></p>
+  <pre><code class="language-js">/api/authors/impact-ratio</code></pre>
+
+  <p>Get authors, by <em>days since last commit</em></p>
+  <pre><code class="language-js">/api/authors/days-since-last-commit</code></pre>
+
+  <p>Get authors, by <em>staleness</em></p>
+  <pre><code class="language-js">/api/authors/staleness</code></pre>
+
+  <p><strong>Simple arrays, unsorted</strong></p>
+
+  <p>Get authors, only <em>email</em></p>
+  <pre><code class="language-js">/api/authors/only-email</code></pre>
+
+  <p>Get authors, only <em>commit count</em></p>
+  <pre><code class="language-js">/api/authors/only-commit-count</code></pre>
+
+  <p>Get authors, only <em>impact</em></p>
+  <pre><code class="language-js">/api/authors/only-impact</code></pre>
 
   <h3>Equal Values operations</h3>
 

@@ -31,7 +31,7 @@ router.get('/api', function (req, res, next) {
 });
 
 ///////////////////////////////////
-//// Global Values operations /////
+///// All commits /////////////////
 ///////////////////////////////////
 
 // get all commits
@@ -41,6 +41,10 @@ router.get('/api/all', function (req, res, next) {
     res.json(commits);
   });
 });
+
+///////////////////////////////////
+///// Global Stats Operations /////
+///////////////////////////////////
 
 // get global- stats
 router.get('/api/stats', function (req, res, next) {
@@ -52,7 +56,7 @@ router.get('/api/stats', function (req, res, next) {
 });
 
 // get repositories - stats
-router.get('/api/repositories/stats', function (req, res, next) {
+router.get('/api/stats/repositories', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     var a = oxo.arrayRepositoriesStats(commits);
@@ -61,7 +65,7 @@ router.get('/api/repositories/stats', function (req, res, next) {
 });
 
 // get authors - stats
-router.get('/api/authors/stats', function (req, res, next) {
+router.get('/api/stats/authors', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     var a = oxo.arrayAuthorsStats(commits);
@@ -69,8 +73,110 @@ router.get('/api/authors/stats', function (req, res, next) {
   });
 });
 
-// get authors - by email
-router.get('/api/authors/by-email', function (req, res, next) {
+///////////////////////////////////
+///// Repositories Operations /////
+///////////////////////////////////
+
+// get repositories - stats simple - sorted by commits
+router.get('/api/repositories/commits', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-commits');
+    res.json(a);
+  });
+});
+
+// get repositories - stats simple - sorted by impact
+router.get('/api/repositories/impact', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-impact');
+    res.json(a);
+  });
+});
+
+// get repositories - stats simple - sorted by impact ratio
+router.get('/api/repositories/impact-ratio', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-impact-ratio');
+    res.json(a);
+  });
+});
+
+// get repositories - stats simple - sorted by days since last commit
+router.get('/api/repositories/days-since-last-commit', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-days-since-last-commit');
+    res.json(a);
+  });
+});
+
+// get repositories - stats simple - sorted by staleness
+router.get('/api/repositories/staleness', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-staleness');
+    res.json(a);
+  });
+});
+
+///////////////////////////////////
+///// Authors Operations //////////
+///////////////////////////////////
+
+///// simple stats, sorted by... //
+
+// get authors - stats simple - sorted by commits
+router.get('/api/authors/commit-count', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayAuthorsStats(commits, 'simple-by-commit-count');
+    res.json(a);
+  });
+});
+
+// get authors - stats simple - sorted by impact
+router.get('/api/authors/impact', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayAuthorsStats(commits, 'simple-by-impact');
+    res.json(a);
+  });
+});
+
+// get authors - stats simple - sorted by impact ratio
+router.get('/api/authors/impact-ratio', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayAuthorsStats(commits, 'simple-by-impact-ratio');
+    res.json(a);
+  });
+});
+
+// get authors - stats simple - sorted by days since last commit
+router.get('/api/authors/days-since-last-commit', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayAuthorsStats(commits, 'simple-by-days-since-last-commit');
+    res.json(a);
+  });
+});
+
+// get authors - stats simple - sorted by staleness
+router.get('/api/authors/staleness', function (req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = oxo.arrayAuthorsStats(commits, 'simple-by-staleness');
+    res.json(a);
+  });
+});
+
+///// simple arrays, unsorted /////
+
+// get authors - only email
+router.get('/api/authors/only-email', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     var a = oxo.arrayAuthorsStats(commits, 'author');
@@ -78,8 +184,8 @@ router.get('/api/authors/by-email', function (req, res, next) {
   });
 });
 
-// get authors - by email
-router.get('/api/authors/by-commit-count', function (req, res, next) {
+// get authors - only commit count
+router.get('/api/authors/only-commit-count', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     var a = oxo.arrayAuthorsStats(commits, 'commits');
@@ -87,8 +193,8 @@ router.get('/api/authors/by-commit-count', function (req, res, next) {
   });
 });
 
-// get authors - by impact
-router.get('/api/authors/by-impact', function (req, res, next) {
+// get authors - only impact
+router.get('/api/authors/only-impact', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     var a = oxo.arrayAuthorsStats(commits, 'impact');
@@ -97,16 +203,8 @@ router.get('/api/authors/by-impact', function (req, res, next) {
 });
 
 ///////////////////////////////////
-//// Equal Values operations //////
+//// Equal Values Operations //////
 ///////////////////////////////////
-
-// get all commits with similar 'repository'
-router.get('/api/repository/:repository', function(req, res, next) {
-  Commit.find({ 'repository': req.params.repository }, function (err, commits) {
-    if (err) return next(err);
-    res.json(commits);
-  });
-});
 
 // get all commits with similar 'repository'
 router.get('/api/repository/:repository', function(req, res, next) {
@@ -292,7 +390,7 @@ router.get('/api/impact/:impact', function(req, res, next) {
 });
 
 ///////////////////////////////////
-//// Single Commits operations ////
+//// CRUD Operations - Commit /////
 ///////////////////////////////////
 
 // get one commit
@@ -341,7 +439,3 @@ router.delete('/api/:id', function(req, res, next) {
     res.json({ message: 'Successfully deleted' });
   });
 });
-
-
-
-

@@ -52,13 +52,27 @@
 
     // Order object by key
     // ------------------------------------------------------------
-    exports.sortObjByKey = function(obj) {
+    exports.sortObjByKey = function(obj, key) {
         var objUnordered = obj;
         var objOrdered = {};
         Object.keys(objUnordered).sort().forEach(function(key) {
             objOrdered[key] = objUnordered[key];
         });
         return objOrdered;
+    };
+
+    // Order array by key
+    // ------------------------------------------------------------
+    exports.sortArrayByKey = function(array, key, ascdesc) {
+        return array.sort(function(a, b) {
+            var x = a[key];
+            var y = b[key];
+            if (ascdesc == 'asc') {
+                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            } else if (ascdesc == 'desc') {
+                return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+            }
+        });
     };
 
     // Objects used to be compared to while sorting
@@ -423,6 +437,8 @@
                 var authorImpactSum = this.totalSum(authorImpact);
                 // calculate total number of commits
                 var authorNrCommits = this.itemsSum(objb);
+                // calculate the ratio of impact per commit
+                var authorImpactRatio = authorImpactSum / authorNrCommits;
                 // calculate author's commits on a given week day
                 var authorDays = this.arrayByKey(objb, 'date_day_week');
                 // calculate days between first and last commits
@@ -432,6 +448,8 @@
                 // calculate days since first and last commits
                 var daysSinceFirstCommit = this.daysSince(commitDateFirst);
                 var daysSinceLastCommit = this.daysSince(commitDateLast);
+                // calculate staleness
+                var staleness = daysSinceLastCommit / 365;
                 // calculate commits per day
                 var commitsPerDay = this.arrayByKey(objb, 'date_iso_8601');
                 // push new data to array
@@ -465,17 +483,69 @@
                     stats.push(
                         arrayOfValues(this.groupByDuplicatesInArray(commitsPerDay))
                     );
+                } else if (type == 'simple-by-commits') {
+                    stats.push({
+                        author: b,
+                        commits: authorNrCommits,
+                        impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'commits', 'desc');
+                } else if (type == 'simple-by-impact') {
+                    stats.push({
+                        author: b,
+                        commits: authorNrCommits,
+                        impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'impact', 'desc');
+                } else if (type == 'simple-by-impact-ratio') {
+                    stats.push({
+                        author: b,
+                        commits: authorNrCommits,
+                        impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'impactRatio', 'desc');
+                } else if (type == 'simple-by-days-since-last-commit') {
+                    stats.push({
+                        author: b,
+                        commits: authorNrCommits,
+                        impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'daysSinceLastCommit', 'desc');
+                } else if (type == 'simple-by-staleness') {
+                    stats.push({
+                        author: b,
+                        commits: authorNrCommits,
+                        impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'staleness', 'desc');
                 } else {
                     stats.push({
                         author: b,
                         commits: authorNrCommits,
                         impact: authorImpactSum,
+                        impactRatio: authorImpactRatio,
                         weekdays : this.groupByDuplicatesInArray(authorDays),
                         daysActive : daysActive,
                         commitDateFirst : commitDateFirst,
                         commitDateLast : commitDateLast,
                         daysSinceFirstCommit : daysSinceFirstCommit,
                         daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness,
                         commitsPerDay: this.groupByDuplicatesInArray(commitsPerDay)
                     });
                 }
@@ -506,6 +576,8 @@
                 var repoImpactSum = this.totalSum(repoImpact);
                 // calculate total number of commits
                 var repoNrCommits = this.itemsSum(objb);
+                // calculate the ratio of impact per commit
+                var repoImpactRatio = repoImpactSum / repoNrCommits;
                 // calculate repo's commits on a given week day
                 var repoDays = this.arrayByKey(objb, 'date_day_week');
                 // calculate days between first and last commits
@@ -515,6 +587,8 @@
                 // calculate days since first and last commits
                 var daysSinceFirstCommit = this.daysSince(commitDateFirst);
                 var daysSinceLastCommit = this.daysSince(commitDateLast);
+                // calculate staleness
+                var staleness = daysSinceLastCommit / 365;
                 // calculate commits per day
                 var commitsPerDay = this.arrayByKey(objb, 'date_iso_8601');
                 // push new data to array
@@ -548,11 +622,64 @@
                     stats.push(
                         arrayOfValues(this.groupByDuplicatesInArray(commitsPerDay))
                     );
+                } else if (type == 'simple-by-commits') {
+                    stats.push({
+                        repository: b,
+                        commits: repoNrCommits,
+                        impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'commits', 'desc');
+                } else if (type == 'simple-by-impact') {
+                    stats.push({
+                        repository: b,
+                        commits: repoNrCommits,
+                        impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'impact', 'desc');
+                } else if (type == 'simple-by-impact-ratio') {
+                    stats.push({
+                        repository: b,
+                        commits: repoNrCommits,
+                        impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'impactRatio', 'desc');
+                } else if (type == 'simple-by-days-since-last-commit') {
+                    stats.push({
+                        repository: b,
+                        commits: repoNrCommits,
+                        impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'daysSinceLastCommit', 'desc');
+                } else if (type == 'simple-by-staleness') {
+                    stats.push({
+                        repository: b,
+                        commits: repoNrCommits,
+                        impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness
+                    });
+                    stats = this.sortArrayByKey(stats, 'staleness', 'desc');
                 } else {
                     stats.push({
                         repository: b,
                         commits: repoNrCommits,
                         impact: repoImpactSum,
+                        impactRatio: repoImpactRatio,
+                        daysSinceLastCommit : daysSinceLastCommit,
+                        staleness: staleness,
                         weekdays: this.groupByDuplicatesInArray(repoDays),
                         daysActive: daysActive,
                         commitDateFirst: commitDateFirst,
@@ -635,6 +762,8 @@
         // calculate days since first and last commits
         var daysSinceFirstCommit = this.daysSince(commitDateFirst);
         var daysSinceLastCommit = this.daysSince(commitDateLast);
+        // calculate staleness
+        var staleness = daysSinceLastCommit / 365;
         // calculate commits per day
         var commitsPerContributor = (totalNrCommits / totalNrContributors);
         // calculate commits per day
@@ -662,6 +791,7 @@
             commitDateLast: commitDateLast,
             daysSinceFirstCommit: daysSinceFirstCommit,
             daysSinceLastCommit: daysSinceLastCommit,
+            staleness: staleness,
             commitsPerDay: commitsPerDay,
             commitsPerContributor: commitsPerContributor,
             commitsByContributor: arrayAuthorsStatsAuthorAndCommits,
