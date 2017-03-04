@@ -19,9 +19,9 @@ router.get('/api', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
     if (commits.length > 0) {
-      var status = "The database has records and we're good to go!";
+      var status = "<span style='color: green'>The database has records and we're good to go!</span>";
     } else {
-      status =  "The database has no records. Please import 'gitlogg.json'";
+      status =  "<span style='color: red'>The database has no records. Please import 'gitlogg.json'</span>";
     }
     res.render('api', {
       title: 'Gitlogg API',

@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>{{ title }}</h1>
-  Status: {{ status }}
+  <p>Status: {{ status | safe }}</p>
   <p>The API has the following available datapoints:</p>
 
   <h2>Global Operations</h2>
