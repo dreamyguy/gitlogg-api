@@ -1,3 +1,4 @@
+{% from 'macros.nunjucks' import apiUrl %}
 <!doctype html>
 <html lang="en">
 <head>

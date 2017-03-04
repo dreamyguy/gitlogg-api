@@ -5,150 +5,215 @@
   Status: {{ status }}
   <p>The API has the following available datapoints:</p>
 
-  <h3>API Status & Documentation <em>(this page)</em></h3>
+  <h2>Global Operations</h2>
 
-  <pre><code class="language-js">/api</code></pre>
+  {{apiUrl(
+    heading='API Status & Documentation <em>(this page)</em>',
+    url='/api',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get <em>ALL</em> commits',
+    url='/api/all',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get global stats',
+    url='/api/stats',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get repositories stats',
+    url='/api/stats/repositories',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors stats',
+    url='/api/stats/authors',
+    link=true
+  )}}
 
-  <h3>Get <em>ALL</em> commits</h3>
+  <h2>Repositories Operations</h2>
 
-  <pre><code class="language-js">/api/all</code></pre>
+  {{apiUrl(
+    heading='Get repositories, by <em>commit count</em>',
+    url='/api/repositories/commit-count',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get repositories, by <em>impact</em>',
+    url='/api/repositories/impact',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get repositories, by <em>impact ratio</em>',
+    url='/api/repositories/impact-ratio',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get repositories, by <em>days since last commit</em>',
+    url='/api/repositories/days-since-last-commit',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get repositories, by <em>staleness</em>',
+    url='/api/repositories/staleness',
+    link=true
+  )}}
 
-  <h3>Global Stats operations</h3>
+  <h2>Authors Operations</h2>
 
-  <p>Get global stats</p>
-  <pre><code class="language-js">/api/stats</code></pre>
+  <h3>Simple stats, sorted by...</h3>
 
-  <p>Get repositories stats</p>
-  <pre><code class="language-js">/api/stats/repositories</code></pre>
+  {{apiUrl(
+    heading='Get authors, by <em>commit count</em>',
+    url='/api/authors/commit-count',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, by <em>impact</em>',
+    url='/api/authors/impact',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, by <em>impact ratio</em>',
+    url='/api/authors/impact-ratio',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, by <em>days since last commit</em>',
+    url='/api/authors/days-since-last-commit',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, by <em>staleness</em>',
+    url='/api/authors/staleness',
+    link=true
+  )}}
 
-  <p>Get authors stats</p>
-  <pre><code class="language-js">/api/stats/authors</code></pre>
+  <h3>Simple arrays, unsorted</h3>
 
-  <h3>Repositories Operations</h3>
+  {{apiUrl(
+    heading='Get authors, only <em>email</em>',
+    url='/api/authors/only-email',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, only <em>commit count</em>',
+    url='/api/authors/only-commit-count',
+    link=true
+  )}}
+  {{apiUrl(
+    heading='Get authors, only <em>impact</em>',
+    url='/api/authors/only-impact',
+    link=true
+  )}}
 
-  <p>Get repositories, by commit count</p>
-  <pre><code class="language-js">/api/repositories/commit-count</code></pre>
+  <h2>Equal Values operations</h2>
 
-  <p>Get repositories, by impact</p>
-  <pre><code class="language-js">/api/repositories/impact</code></pre>
-
-  <p>Get repositories, by impact ratio</p>
-  <pre><code class="language-js">/api/repositories/impact-ratio</code></pre>
-
-  <p>Get repositories, by days since last commit</p>
-  <pre><code class="language-js">/api/repositories/days-since-last-commit</code></pre>
-
-  <p>Get repositories, by staleness</p>
-  <pre><code class="language-js">/api/repositories/staleness</code></pre>
-
-  <h3>Authors Operations</h3>
-
-  <p><strong>Simple stats, sorted by...</strong></p>
-
-  <p>Get authors, by <em>commit count</em></p>
-  <pre><code class="language-js">/api/authors/commit-count</code></pre>
-
-  <p>Get authors, by <em>impact</em></p>
-  <pre><code class="language-js">/api/authors/impact</code></pre>
-
-  <p>Get authors, by <em>impact ratio</em></p>
-  <pre><code class="language-js">/api/authors/impact-ratio</code></pre>
-
-  <p>Get authors, by <em>days since last commit</em></p>
-  <pre><code class="language-js">/api/authors/days-since-last-commit</code></pre>
-
-  <p>Get authors, by <em>staleness</em></p>
-  <pre><code class="language-js">/api/authors/staleness</code></pre>
-
-  <p><strong>Simple arrays, unsorted</strong></p>
-
-  <p>Get authors, only <em>email</em></p>
-  <pre><code class="language-js">/api/authors/only-email</code></pre>
-
-  <p>Get authors, only <em>commit count</em></p>
-  <pre><code class="language-js">/api/authors/only-commit-count</code></pre>
-
-  <p>Get authors, only <em>impact</em></p>
-  <pre><code class="language-js">/api/authors/only-impact</code></pre>
-
-  <h3>Equal Values operations</h3>
-
-  <p>Get all commits with same <em>repository</em></p>
-  <pre><code class="language-js">/api/repository/:repository</code></pre>
-
-  <p>Get all commits with same <em>commit_nr</em></p>
-  <pre><code class="language-js">/api/commit_nr/:commit_nr</code></pre>
-
-  <p>Get all commits with same <em>commit_hash</em></p>
-  <pre><code class="language-js">/api/commit_hash/:commit_hash</code></pre>
-
-  <p>Get all commits with same <em>author_name</em></p>
-  <pre><code class="language-js">/api/author_name/:author_name</code></pre>
-
-  <p>Get all commits with same <em>author_email</em></p>
-  <pre><code class="language-js">/api/author_email/:author_email</code></pre>
-
-  <p>Get all commits with same <em>author_date</em></p>
-  <pre><code class="language-js">/api/author_date/:author_date</code></pre>
-
-  <p>Get all commits with same <em>author_date_relative</em></p>
-  <pre><code class="language-js">/api/author_date_relative/:author_date_relative</code></pre>
-
-  <p>Get all commits with same <em>author_date_unix_timestamp</em></p>
-  <pre><code class="language-js">/api/author_date_unix_timestamp/:author_date_unix_timestamp</code></pre>
-
-  <p>Get all commits with same <em>author_date_iso_8601</em></p>
-  <pre><code class="language-js">/api/author_date_iso_8601/:author_date_iso_8601</code></pre>
-
-  <p>Get all commits with same <em>subject</em></p>
-  <pre><code class="language-js">/api/subject/:subject</code></pre>
-
-  <p>Get all commits with same <em>subject_sanitized</em></p>
-  <pre><code class="language-js">/api/subject_sanitized/:subject_sanitized</code></pre>
-
-  <p>Get all commits with same <em>stats</em></p>
-  <pre><code class="language-js">/api/stats/:stats</code></pre>
-
-  <p>Get all commits with same <em>time_hour</em></p>
-  <pre><code class="language-js">/api/time_hour/:time_hour</code></pre>
-
-  <p>Get all commits with same <em>time_minutes</em></p>
-  <pre><code class="language-js">/api/time_minutes/:time_minutes</code></pre>
-
-  <p>Get all commits with same <em>time_seconds</em></p>
-  <pre><code class="language-js">/api/time_seconds/:time_seconds</code></pre>
-
-  <p>Get all commits with same <em>time_gmt</em></p>
-  <pre><code class="language-js">/api/time_gmt/:time_gmt</code></pre>
-
-  <p>Get all commits with same <em>date_day_week</em></p>
-  <pre><code class="language-js">/api/date_day_week/:date_day_week</code></pre>
-
-  <p>Get all commits with same <em>date_month_day</em></p>
-  <pre><code class="language-js">/api/date_month_day/:date_month_day</code></pre>
-
-  <p>Get all commits with same <em>date_month_name</em></p>
-  <pre><code class="language-js">/api/date_month_name/:date_month_name</code></pre>
-
-  <p>Get all commits with same <em>date_month_number</em></p>
-  <pre><code class="language-js">/api/date_month_number/:date_month_number</code></pre>
-
-  <p>Get all commits with same <em>date_year</em></p>
-  <pre><code class="language-js">/api/date_year/:date_year</code></pre>
-
-  <p>Get all commits with same <em>date_iso_8601</em></p>
-  <pre><code class="language-js">/api/date_iso_8601/:date_iso_8601</code></pre>
-
-  <p>Get all commits with same <em>files_changed</em></p>
-  <pre><code class="language-js">/api/files_changed/:files_changed</code></pre>
-
-  <p>Get all commits with same <em>insertions</em></p>
-  <pre><code class="language-js">/api/insertions/:insertions</code></pre>
-
-  <p>Get all commits with same <em>deletions</em></p>
-  <pre><code class="language-js">/api/deletions/:deletions</code></pre>
-
-  <p>Get all commits with same <em>impact</em></p>
-  <pre><code class="language-js">/api/impact/:impact</code></pre>
+  {{apiUrl(
+    heading='Get all commits with same <em>repository</em>',
+    url='/api/repository/:repository'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>commit_nr</em>',
+    url='/api/commit_nr/:commit_nr'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>commit_hash</em>',
+    url='/api/commit_hash/:commit_hash'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>author_name</em>',
+    url='/api/author_name/:author_name'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>author_email</em>',
+    url='/api/author_email/:author_email'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>author_date</em>',
+    url='/api/author_date/:author_date'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>author_date_relative</em>',
+    url='/api/author_date_relative/:author_date_relative'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>author_date_unix_timestamp</em>',
+    url='/api/author_date_unix_timestamp/:author_date_unix_timestamp'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>author_date_iso_8601</em>',
+    url='/api/author_date_iso_8601/:author_date_iso_8601'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>subject</em>',
+    url='/api/subject/:subject'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>subject_sanitized</em>',
+    url='/api/subject_sanitized/:subject_sanitized'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>stats</em>',
+    url='/api/stats/:stats'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>time_hour</em>',
+    url='/api/time_hour/:time_hour'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>time_minutes</em>',
+    url='/api/time_minutes/:time_minutes'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>time_seconds</em>',
+    url='/api/time_seconds/:time_seconds'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>time_gmt</em>',
+    url='/api/time_gmt/:time_gmt'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>date_day_week</em>',
+    url='/api/date_day_week/:date_day_week'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>date_month_day</em>',
+    url='/api/date_month_day/:date_month_day'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>date_month_name</em>',
+    url='/api/date_month_name/:date_month_name'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>date_month_number</em>',
+    url='/api/date_month_number/:date_month_number'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>date_year</em>',
+    url='/api/date_year/:date_year'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>date_iso_8601</em>',
+    url='/api/date_iso_8601/:date_iso_8601'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>files_changed</em>',
+    url='/api/files_changed/:files_changed'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>insertions</em>',
+    url='/api/insertions/:insertions'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>deletions</em>',
+    url='/api/deletions/:deletions'
+  )}}
+  {{apiUrl(
+    heading='Get all commits with same <em>impact</em>',
+    url='/api/impact/:impact'
+  )}}
 
 {% endblock %}
