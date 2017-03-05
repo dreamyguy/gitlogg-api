@@ -1,7 +1,9 @@
 var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
-  oxo = require('../helpers/all'),
+  arrayAuthorsStats = require('../helpers/arrayAuthorsStats'),
+  arrayGlobalStats = require('../helpers/arrayGlobalStats'),
+  arrayRepositoriesStats = require('../helpers/arrayRepositoriesStats'),
   Commit = mongoose.model('Commit');
 
 module.exports = function (app) {
@@ -50,7 +52,7 @@ router.get('/api/all', function (req, res, next) {
 router.get('/api/stats', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayGlobalStats(commits);
+    var a = arrayGlobalStats(commits);
     res.json(a);
   });
 });
@@ -59,7 +61,7 @@ router.get('/api/stats', function (req, res, next) {
 router.get('/api/stats/repositories', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits);
+    var a = arrayRepositoriesStats(commits);
     res.json(a);
   });
 });
@@ -68,7 +70,7 @@ router.get('/api/stats/repositories', function (req, res, next) {
 router.get('/api/stats/authors', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits);
+    var a = arrayAuthorsStats(commits);
     res.json(a);
   });
 });
@@ -81,7 +83,7 @@ router.get('/api/stats/authors', function (req, res, next) {
 router.get('/api/repositories/commits', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-commits');
+    var a = arrayRepositoriesStats(commits, 'simple-by-commits');
     res.json(a);
   });
 });
@@ -90,7 +92,7 @@ router.get('/api/repositories/commits', function (req, res, next) {
 router.get('/api/repositories/impact', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-impact');
+    var a = arrayRepositoriesStats(commits, 'simple-by-impact');
     res.json(a);
   });
 });
@@ -99,7 +101,7 @@ router.get('/api/repositories/impact', function (req, res, next) {
 router.get('/api/repositories/impact-ratio', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-impact-ratio');
+    var a = arrayRepositoriesStats(commits, 'simple-by-impact-ratio');
     res.json(a);
   });
 });
@@ -108,7 +110,7 @@ router.get('/api/repositories/impact-ratio', function (req, res, next) {
 router.get('/api/repositories/days-since-last-commit', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-days-since-last-commit');
+    var a = arrayRepositoriesStats(commits, 'simple-by-days-since-last-commit');
     res.json(a);
   });
 });
@@ -117,7 +119,7 @@ router.get('/api/repositories/days-since-last-commit', function (req, res, next)
 router.get('/api/repositories/staleness', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-staleness');
+    var a = arrayRepositoriesStats(commits, 'simple-by-staleness');
     res.json(a);
   });
 });
@@ -126,7 +128,7 @@ router.get('/api/repositories/staleness', function (req, res, next) {
 router.get('/api/repositories/days-active', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-days-active');
+    var a = arrayRepositoriesStats(commits, 'simple-by-days-active');
     res.json(a);
   });
 });
@@ -135,7 +137,7 @@ router.get('/api/repositories/days-active', function (req, res, next) {
 router.get('/api/repositories/contributors-nr', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayRepositoriesStats(commits, 'simple-by-contributors-nr');
+    var a = arrayRepositoriesStats(commits, 'simple-by-contributors-nr');
     res.json(a);
   });
 });
@@ -150,7 +152,7 @@ router.get('/api/repositories/contributors-nr', function (req, res, next) {
 router.get('/api/authors/commit-count', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'simple-by-commit-count');
+    var a = arrayAuthorsStats(commits, 'simple-by-commit-count');
     res.json(a);
   });
 });
@@ -159,7 +161,7 @@ router.get('/api/authors/commit-count', function (req, res, next) {
 router.get('/api/authors/impact', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'simple-by-impact');
+    var a = arrayAuthorsStats(commits, 'simple-by-impact');
     res.json(a);
   });
 });
@@ -168,7 +170,7 @@ router.get('/api/authors/impact', function (req, res, next) {
 router.get('/api/authors/impact-ratio', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'simple-by-impact-ratio');
+    var a = arrayAuthorsStats(commits, 'simple-by-impact-ratio');
     res.json(a);
   });
 });
@@ -177,7 +179,7 @@ router.get('/api/authors/impact-ratio', function (req, res, next) {
 router.get('/api/authors/days-since-last-commit', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'simple-by-days-since-last-commit');
+    var a = arrayAuthorsStats(commits, 'simple-by-days-since-last-commit');
     res.json(a);
   });
 });
@@ -186,7 +188,7 @@ router.get('/api/authors/days-since-last-commit', function (req, res, next) {
 router.get('/api/authors/staleness', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'simple-by-staleness');
+    var a = arrayAuthorsStats(commits, 'simple-by-staleness');
     res.json(a);
   });
 });
@@ -195,7 +197,7 @@ router.get('/api/authors/staleness', function (req, res, next) {
 router.get('/api/authors/days-active', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'simple-by-days-active');
+    var a = arrayAuthorsStats(commits, 'simple-by-days-active');
     res.json(a);
   });
 });
@@ -204,7 +206,7 @@ router.get('/api/authors/days-active', function (req, res, next) {
 router.get('/api/authors/repositories-nr', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'simple-by-repositories-nr');
+    var a = arrayAuthorsStats(commits, 'simple-by-repositories-nr');
     res.json(a);
   });
 });
@@ -215,7 +217,7 @@ router.get('/api/authors/repositories-nr', function (req, res, next) {
 router.get('/api/authors/only-email', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'author');
+    var a = arrayAuthorsStats(commits, 'author');
     res.json(a);
   });
 });
@@ -224,7 +226,7 @@ router.get('/api/authors/only-email', function (req, res, next) {
 router.get('/api/authors/only-commit-count', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'commits');
+    var a = arrayAuthorsStats(commits, 'commits');
     res.json(a);
   });
 });
@@ -233,7 +235,7 @@ router.get('/api/authors/only-commit-count', function (req, res, next) {
 router.get('/api/authors/only-impact', function (req, res, next) {
   Commit.find(function (err, commits) {
     if (err) return next(err);
-    var a = oxo.arrayAuthorsStats(commits, 'impact');
+    var a = arrayAuthorsStats(commits, 'impact');
     res.json(a);
   });
 });
