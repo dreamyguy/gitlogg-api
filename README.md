@@ -149,7 +149,8 @@ None of these issues are detrimental to the functionality of the current API at 
 
 #### Release History
 
-No release yet at this point.
+* 2017-03-05   [v0.1.0](https://github.com/dreamyguy/gitlogg-api/tree/v0.1.0)
+  * First release. Basic API is up and running with various data endpoints.
 
 -------------
 
