@@ -1,6 +1,6 @@
 // Return number that results from adding a key to itself
 // ------------------------------------------------------------
-exports.totalSum = function(data) {
+module.exports = function(data) {
   var sum = 0;
   for (var i = 0; i < data.length; i++) {
     sum += parseInt(data[i]);

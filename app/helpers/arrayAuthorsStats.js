@@ -8,7 +8,7 @@ var totalSum = require('../helpers/totalSum');
 
 // Get author stats and output it on a dedicated array, with options
 // ------------------------------------------------------------
-exports.arrayAuthorsStats = function(data, type) {
+module.exports = function(data, type) {
   var obja = {};
   for (var i in data) {
     if (!obja.hasOwnProperty(data[i].author_email)) {

@@ -1,6 +1,6 @@
 // Order array by key
 // ------------------------------------------------------------
-exports.sortArrayByKey = function(array, key, ascdesc) {
+module.exports = function(array, key, ascdesc) {
   return array.sort(function(a, b) {
     var x = a[key];
     var y = b[key];

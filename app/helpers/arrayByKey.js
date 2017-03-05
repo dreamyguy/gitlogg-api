@@ -1,6 +1,6 @@
 // Create array based on key value
 // ------------------------------------------------------------
-exports.arrayByKey = function(data, key) {
+module.exports = function(data, key) {
   var arr = [];
   for (var i in data) {
     if (data[i][key] === undefined) {

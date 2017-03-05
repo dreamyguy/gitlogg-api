@@ -1,6 +1,6 @@
 // Create array based on key value filtered by a value greater than
 // ------------------------------------------------------------
-exports.arrayByKeyFilteredGreaterThan = function(data, key, value) {
+module.exports = function(data, key, value) {
   var arr = [];
   value = parseInt(value);
   for (var i in data) {

@@ -1,6 +1,6 @@
 // Calculate number of days between two dates
 // ------------------------------------------------------------
-exports.daysBetween = function(timeStampA, timeStampB) {
+module.exports = function(timeStampA, timeStampB) {
   var oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
   var firstDate = new Date(timeStampA * 1000);
   var secondDate = new Date(timeStampB * 1000);

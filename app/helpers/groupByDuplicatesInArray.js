@@ -1,6 +1,6 @@
 // Count duplicate keys within an array
 // ------------------------------------------------------------
-exports.groupByDuplicatesInArray = function(array) {
+module.exports = function(array) {
   if(array.length === 0) {
     return null;
   }

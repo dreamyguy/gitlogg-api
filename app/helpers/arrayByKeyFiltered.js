@@ -1,6 +1,6 @@
 // Create array based on key value filtered by a value
 // ------------------------------------------------------------
-exports.arrayByKeyFiltered = function(data, key, value) {
+module.exports = function(data, key, value) {
   var arr = [];
   for (var i in data) {
     if (data[i][key] == value) {

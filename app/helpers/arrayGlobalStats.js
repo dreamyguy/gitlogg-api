@@ -11,7 +11,7 @@ var totalSum = require('../helpers/totalSum');
 
 // Get global stats and output it on a dedicated array, with options
 // ------------------------------------------------------------
-exports.arrayGlobalStats = function(data, type) {
+module.exports = function(data, type) {
   var stats = [];
   // var data = data;
 
