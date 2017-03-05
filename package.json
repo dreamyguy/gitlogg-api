@@ -9,7 +9,7 @@
     "test:coverage": "nyc npm test",
     "test:unit": "mocha --recursive test/middleware test/models test/routes",
     "test:integration": "mocha --recursive test/integration",
-    "import": "mongoimport --db gitlogg-api-development --drop --collection commits --type json --file gitlogg.json --jsonArray"
+    "import": "mongoimport --db gitlogg-api-development --drop --collection commits --type json --file gitlogg.json --jsonArray --stopOnError"
   },
   "dependencies": {
     "express": "^4.13.3",
