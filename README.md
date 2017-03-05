@@ -149,6 +149,8 @@ None of these issues are detrimental to the functionality of the current API at 
 
 #### Release History
 
+* 2017-03-05   [v0.1.1](https://github.com/dreamyguy/gitlogg-api/tree/v0.1.1) - [View Changes](https://github.com/dreamyguy/gitlogg-api/compare/v0.1.0...v0.1.1)
+  * Correct 'module.exports' on helpers so that their functions are correctly referred to.
 * 2017-03-05   [v0.1.0](https://github.com/dreamyguy/gitlogg-api/tree/v0.1.0)
   * First release. Basic API is up and running with various data endpoints.
 
