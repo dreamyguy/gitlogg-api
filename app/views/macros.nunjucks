@@ -1,6 +1,6 @@
 {% macro apiUrl(heading, url, link) %}
   {% if heading %}
-    <p><strong>{{heading|safe}}</strong>{% if link %} - <a href="http://localhost:7000{{url}}">[open]</a>{% endif %}</p>
+    <p><strong>{{heading|safe}}</strong>{% if link %} - <a href="{{url}}">[open]</a>{% endif %}</p>
   {% endif %}
   <pre><code class="language-js">{{url}}</code></pre>
 {% endmacro %}

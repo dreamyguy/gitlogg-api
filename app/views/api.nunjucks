@@ -9,8 +9,7 @@
 
   {{apiUrl(
     heading='API Status & Documentation <em>(this page)</em>',
-    url='/api',
-    link=true
+    url='/api'
   )}}
   {{apiUrl(
     heading='Get <em>ALL</em> commits',

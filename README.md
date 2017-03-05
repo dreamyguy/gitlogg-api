@@ -10,7 +10,7 @@
 
 ## Getting started
 
-**Gitlogg-API** requires [NodeJS][2] and [MongoDB][3].
+**Gitlogg API** requires [NodeJS][2] and [MongoDB][3].
 
 To get started, follow these steps, in this order:
 
@@ -30,9 +30,9 @@ The API interface is fully dynamic and based on currently available datapoints. 
 
 ![Gitlogg API interface](https://raw.githubusercontent.com/dreamyguy/gitlogg-api/master/docs/gitlogg-api_interface.png "Gitlogg API interface")
 
-Since it's dynamic, I'll refrain from posting all the datapoints in _this_ README file, but some examples are in order.
-
 > **Please DO NOTE** that since this API is based on the data outputted by [**Gitlogg**][4], the datapoints are intrinsically connected to the structure and the naming convention of that data!
+
+I'll refrain from posting all the datapoints in _this_ README file, but some examples are in order. For a full overview, initialise the API and visit `http://localhost:7000/api`.
 
 ### Global Operations
 
@@ -143,10 +143,7 @@ Having said that, they're served _raw_ and _'as is'_. You may get support, but d
 #### Known Issues
 
 * No caching, _yet_. Depending of the size of your data, the API will load, but with a lot of lag.
-* All the helper functions that are used to crunch the data are thrown into one file, making it bigger and more complex than I'd like it to be. It will be modularised as soon as I achieve some milestones.
- * There's some redundant content on the very same file, which I will remove in due time.
-* There are no tests at the moment.
- * As there are no tests, some of the helper functions may not work as they are expected to.
+* There are no tests at the moment, so some of the helper functions may not fully work as they are expected to.
 
 None of these issues are detrimental to the functionality of the current API at the time of this writing, AFAIK.
 
