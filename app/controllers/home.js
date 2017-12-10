@@ -1,6 +1,8 @@
 var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
+  arrayByKey = require('../helpers/arrayByKey'),
+  arrayMaxMin = require('../helpers/arrayMaxMin'),
   arrayAuthorsStats = require('../helpers/arrayAuthorsStats'),
   arrayGlobalStats = require('../helpers/arrayGlobalStats'),
   arrayRepositoriesStats = require('../helpers/arrayRepositoriesStats'),
@@ -424,6 +426,45 @@ router.get('/api/impact/:impact', function(req, res, next) {
   Commit.find({ 'impact': req.params.impact }, function (err, commits) {
     if (err) return next(err);
     res.json(commits);
+  });
+});
+
+/////////////////////////////////////////////
+///// Key Values as Array Operation /////////
+/////////////////////////////////////////////
+
+// get all values for keys and output them as a simple array
+router.get('/api/key/:key', function(req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = arrayByKey(commits, req.params.key);
+    res.json(a);
+  });
+});
+
+/////////////////////////////////////////////
+///// Key Values - Max & Min values /////////
+/////////////////////////////////////////////
+
+// get max. value for key and output it
+router.get('/api/key/:key/max', function(req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = arrayMaxMin(
+      arrayByKey(commits, req.params.key), 'max'
+    );
+    res.json(a);
+  });
+});
+
+// get min. value for key and output it
+router.get('/api/key/:key/min', function(req, res, next) {
+  Commit.find(function (err, commits) {
+    if (err) return next(err);
+    var a = arrayMaxMin(
+      arrayByKey(commits, req.params.key), 'min'
+    );
+    res.json(a);
   });
 });
 

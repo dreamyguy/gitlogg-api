@@ -18,18 +18,6 @@ exports.getValueOfFirstOrLastKey = function(obj, value, mode) {
 };
 // var firstAuthor = getValueOfFirstOrLastKey(data, 'author_email', 'first');
 
-// Get max/min number in array: max | min
-// ------------------------------------------------------------
-// exports.arrayMaxMin = function(arr, type) {
-//   var n;
-//   if (type == 'max') {
-//     n = Math.max(...arr);
-//   } else if (type == 'min') {
-//     n = Math.min(...arr);
-//   }
-//   return n;
-// };
-
 // Order object by key
 // ------------------------------------------------------------
 exports.sortObjByKey = function(obj, key) {

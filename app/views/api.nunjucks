@@ -235,4 +235,22 @@
     url='/api/impact/:impact'
   )}}
 
+  <h2>Key Values as Array Operation</h2>
+
+  {{apiUrl(
+    heading='Get all values for <em>key</em> and output them as a simple array',
+    url='/api/key/:key'
+  )}}
+
+  <h2>Key Values - Max &amp; Min values</h2>
+
+  {{apiUrl(
+    heading='Get max. value for <em>key</em> and output it',
+    url='/api/key/:key/max'
+  )}}
+  {{apiUrl(
+    heading='Get min. value for <em>key</em> and output it',,
+    url='/api/key/:key/min'
+  )}}
+
 {% endblock %}
