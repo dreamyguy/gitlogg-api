@@ -249,7 +249,7 @@
     url='/api/key/:key/max'
   )}}
   {{apiUrl(
-    heading='Get min. value for <em>key</em> and output it',,
+    heading='Get min. value for <em>key</em> and output it',
     url='/api/key/:key/min'
   )}}
 
