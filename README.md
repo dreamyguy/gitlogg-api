@@ -2,6 +2,8 @@
 
 > _API for the data provided by [Gitlogg][4], so that one can retrieve `git log` data from one or more repositories in relevant chunks._
 
+[![MIT Licence](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dreamyguy/gitlogg/blob/master/LICENSE) [![Works with Gitlogg API](https://img.shields.io/badge/works_with-gitlogg--api-89336e.svg)](https://github.com/dreamyguy/gitlogg-api) [![Works with Gitinsight](https://img.shields.io/badge/works_with-gitinsight-89336e.svg)](https://github.com/dreamyguy/gitinsight)
+
 [**Gitlogg**][4] sanitises the `git log` and outputs it to `JSON`, a format that can easily be consumed by other applications. As long as the repositories being scanned are kept up to date, [**Gitlogg**][4] will return fresh data every time it runs.
 
 **Gitlogg API** was designed solely to distribute the `git log` data already parsed by [**Gitlogg**][4]. Therefore it only makes sense to use it if you've already got the data parsed to `JSON` but need a middleware to crunch the data into smaller, meaningful chunks also in `JSON` format. From there one can build more complex applications to visualise the data.
@@ -106,6 +108,12 @@ Get all commits with same author_email
 
 ...and some others.
 
+## Visualise the data
+
+**Gitlogg API** can also be used in conjunction with [Gitinsight][5], that will render the data provided by the `API`.
+
+Since **Gitlogg API** relies on [Gitlogg][4] to generate the data in `JSON` format, which is in turn imported into the database, _massaged_ by the `API` and served to [Gitinsight][5] that renders the data in meaningful `React` components, these projects are all interconnected. :revolving_hearts:
+
 ## Further Notes
 
 #### Debugging
@@ -149,6 +157,8 @@ None of these issues are detrimental to the functionality of the current API at 
 
 #### Release History
 
+* 2018-04-08   [v0.1.2](https://github.com/dreamyguy/gitlogg-api/tree/v0.1.2) - [View Changes](https://github.com/dreamyguy/gitlogg-api/compare/v0.1.1...v0.1.2)
+  * Update README so that **Gitlogg API**'s relationship to [Gitlogg][4] and [Gitinsight][5] is more obvious
 * 2017-03-05   [v0.1.1](https://github.com/dreamyguy/gitlogg-api/tree/v0.1.1) - [View Changes](https://github.com/dreamyguy/gitlogg-api/compare/v0.1.0...v0.1.1)
   * Correct 'module.exports' on helpers so that their functions are correctly referred to.
 * 2017-03-05   [v0.1.0](https://github.com/dreamyguy/gitlogg-api/tree/v0.1.0)
@@ -162,3 +172,4 @@ None of these issues are detrimental to the functionality of the current API at 
   [2]: https://nodejs.org/en/ "NodeJS"
   [3]: https://www.mongodb.com/ "MongoDB"
   [4]: https://github.com/dreamyguy/gitlogg "Gitlogg"
+  [5]: https://github.com/dreamyguy/gitinsight "Gitinsight"
